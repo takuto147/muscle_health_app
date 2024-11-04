@@ -16,7 +16,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ currentCalories, daily
       <div className="progress-bar-fill" style={{ width: `${progressPercentage}%` }}>
         {progressPercentage.toFixed(0)}%
       </div>
-      <p>自動デプロイ環境確認、確認後消す</p>
     </div>
   );
 };
