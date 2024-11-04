@@ -20,7 +20,7 @@ export const Home = () => {
       <label>今日の合計カロリー:{totalCalories}</label>
       <CalorieBarChart calorieData={calorieData} />
       <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} />
-      <p>自動デプロイ環境確認、確認後消す</p>
+      <p>自動デプロイ環境確認、確認後消す_2</p>
     </>
   );
 };
