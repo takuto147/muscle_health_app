@@ -1,10 +1,14 @@
-import {Chart as ChartJS,CategoryScale,LinearScale,BarElement,Title,Tooltip,Legend,} from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export const CalorieBarChart = ({ calorieData }) => {
-  const data = {
+interface CalorieData {
+  meal: string;
+  calories: number;
+}
+
+export const CalorieBarChart: React.FC<{ calorieData: CalorieData[] }> = ({ calorieData }) => {  const data = {
     labels: calorieData.map((entry) => entry.meal),
     datasets: [
       {
