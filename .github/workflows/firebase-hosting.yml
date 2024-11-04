@@ -19,14 +19,13 @@ jobs:
           node-version: '14'  # 必要な Node.js のバージョンを指定
 
       - name: Install dependencies
-        run: npm ci  # 依存関係をインストール
+        run: npm install
 
       - name: Build the project
         run: npm run build  # ビルドを実行
 
       - name: Deploy to Firebase Hosting
-        uses: wzieba/Firebase-Hosting-Action@v2.0.0
+        uses: firebase/firebase-hosting-setup-action@v0.5.0
         with:
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          channelId: live
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MUSCLE_HEALTH_AUTH }}
           projectId: muscle-health-auth
