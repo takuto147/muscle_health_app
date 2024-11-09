@@ -1,5 +1,6 @@
 import { Header } from "./Header";
 import { ProgressBar } from "./ProgressBar";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const calorieData = [
@@ -15,8 +16,8 @@ export const Home = () => {
 
   const message =
   totalCalories > totalMetabolism
-    ? "摂取カロリーが代謝を超えています。注意が必要です！"
-    : "摂取カロリーは代謝以下です。";
+    ? "摂取カロリーが1日の必要カロリーを超えています。気を付けましょう。"
+    : "摂取カロリーは代謝以下です。このまま頑張りましょう！";
   const messageColor = totalCalories > totalMetabolism ? "text-red-500" : "text-blue-500";
 
 
@@ -30,17 +31,8 @@ export const Home = () => {
       <br />
       <p className={`${messageColor} font-bold mt-4`}>{message}</p>
       <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={totalMetabolism} />
-      <label></label>
       <br />
-      <label></label>
-      <br />
-      <label></label>
-      <br />
-      <label></label>
-      <br />
-      <label></label>
-      <br />
-
+      <Link to="/addmeal" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">食事を記録</Link>
     </>
   );
 };
