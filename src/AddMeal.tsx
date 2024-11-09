@@ -17,6 +17,7 @@ export const AddMeal = () => {
     <>
       <Header />
       <h2 className="text-blue-700 mb-4">食べた食事を記録する</h2>
+      <p>エラー回避用：{meal}{calorie}{Protein}</p>
       <label>食事名</label>
       <br />
       <input type="text" className='rounded-lg border border-gray-200' onChange={handleMealChange} />
