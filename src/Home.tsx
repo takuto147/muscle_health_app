@@ -12,18 +12,18 @@ export const Home = () => {
 
   const totalCalories = calorieData.reduce((sum, entry) => sum + entry.calories, 0);
   // const totalCalories = 1000
-  const totalMetabolism  = 1500
+  const totalMetabolism = 1500
 
   const message =
-  totalCalories > totalMetabolism
-    ? "摂取カロリーが1日の必要カロリーを超えています。気を付けましょう。"
-    : "摂取カロリーは代謝以下です。このまま頑張りましょう！";
+    totalCalories > totalMetabolism
+      ? "摂取カロリーが1日の必要カロリーを超えています。気を付けましょう。"
+      : "摂取カロリーは代謝以下です。このまま頑張りましょう！";
   const messageColor = totalCalories > totalMetabolism ? "text-red-500" : "text-blue-500";
 
 
   return (
-    <>
-      <Header/>
+    <div className="container mx-auto p-4">
+      <Header />
       <h2 className="text-blue-700 mb-4">トップページ</h2>
       <label>今日の合計摂取カロリー：{totalCalories}</label>
       <br />
@@ -33,6 +33,7 @@ export const Home = () => {
       <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={totalMetabolism} />
       <br />
       <Link to="/addmeal" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">食事を記録</Link>
-    </>
+      <Link to="/profile" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">プロフィール更新</Link>
+    </div>
   );
 };

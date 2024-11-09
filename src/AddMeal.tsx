@@ -14,10 +14,10 @@ export const AddMeal = () => {
   }
 
   return (
-    <>
+    <div className="container mx-auto p-4">
       <Header />
       <h2 className="text-blue-700 mb-4">食べた食事を記録する</h2>
-      <p>エラー回避用：{meal}{calorie}{Protein}</p>
+      <p>エラー回避用(後で消す)：{meal} {calorie} {Protein}</p>
       <label>食事名</label>
       <br />
       <input type="text" className='rounded-lg border border-gray-200' onChange={handleMealChange} />
@@ -36,6 +36,6 @@ export const AddMeal = () => {
       <br />
       <br />
       <Link to="/" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">ホームに戻る</Link>
-    </>
+    </div>
   );
 };
