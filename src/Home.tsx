@@ -1,4 +1,3 @@
-import { CalorieBarChart } from "./CalorieBarChart";
 import { Header } from "./Header";
 import { ProgressBar } from "./ProgressBar";
 
@@ -42,7 +41,6 @@ export const Home = () => {
       <label></label>
       <br />
 
-      {/* <CalorieBarChart calorieData={calorieData} /> */}
     </>
   );
 };
