@@ -29,7 +29,7 @@ export const Profile = () => {
       </button>
       <br />
       <br />
-      <Link to="/" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">ホームに戻る</Link>
+      <Link to="/" className="bg-green-300 border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-green-500">ホームに戻る</Link>
     </div>
   );
 };
