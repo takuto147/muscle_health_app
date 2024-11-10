@@ -19,7 +19,7 @@ export const PageNation = () => {
 
   return (
     <>
-<div className="flex space-x-2 mb-4">
+<div className="flex space-x-2 mb-4 overflow-x-auto">
   {weekDates.map((date, index) => (
     <button
       key={index}
