@@ -1,3 +1,4 @@
+// ProgressBar.tsx
 import React, { useState } from "react";
 
 interface ProgressBarProps {
@@ -14,8 +15,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   dailyProteinGoal,
 }) => {
   const [selectedTab, setSelectedTab] = useState<"calories" | "protein">("calories");
-  const calorieProgressPercentage = Math.min((currentCalories / dailyCalorieGoal) * 100, 100)
-  const proteinProgressPercentage = Math.min((currentProtein / dailyProteinGoal) * 100, 100)
+
+  const calorieProgressPercentage = Math.min((currentCalories / dailyCalorieGoal) * 100, 100);
+  const proteinProgressPercentage = Math.min((currentProtein / dailyProteinGoal) * 100, 100);
 
   const handleTabClick = (tab: "calories" | "protein") => {
     setSelectedTab(tab);
@@ -23,22 +25,31 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <div className="max-w-3xl w-full mx-auto mt-6">
+      {/* タブの切り替え */}
       <div className="flex justify-center mb-4">
-        <button onClick={() => handleTabClick("calories")}
-          className={`px-4 py-2 mx-2 rounded-t-lg ${selectedTab === "calories" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"
-            }`}>
+        <button
+          onClick={() => handleTabClick("calories")}
+          className={`px-4 py-2 mx-2 rounded-t-lg ${
+            selectedTab === "calories" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"
+          }`}
+        >
           カロリー
         </button>
-        <button onClick={() => handleTabClick("protein")}
-          className={`px-4 py-2 mx-2 rounded-t-lg ${selectedTab === "protein" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"
-            }`}>
+        <button
+          onClick={() => handleTabClick("protein")}
+          className={`px-4 py-2 mx-2 rounded-t-lg ${
+            selectedTab === "protein" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"
+          }`}
+        >
           たんぱく質
         </button>
       </div>
+
+      {/* 選択されたタブに応じた情報と進捗バーを表示 */}
       {selectedTab === "calories" ? (
         <div className="mb-4">
           <p className="text-center font-semibold mb-2">
-            摂取カロリー:{currentCalories} kcal / 必要カロリー：{dailyCalorieGoal} kcal
+            摂取カロリー: {currentCalories} kcal / 新陳代謝: {dailyCalorieGoal} kcal
           </p>
           <div className="bg-gray-200 rounded-lg overflow-hidden h-6 shadow-md border border-gray-300">
             <div

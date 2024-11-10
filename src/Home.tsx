@@ -16,6 +16,8 @@ export const Home = () => {
   const totalCalories = calorieData.reduce((sum, entry) => sum + entry.calories, 0);
   // const totalCalories = 1000
   const totalMetabolism = 1500
+  const totalProtein = 60
+  const dailyProtein = 90
 
   const message =
     totalCalories > totalMetabolism
@@ -36,7 +38,8 @@ export const Home = () => {
       <label>〇〇さんの新陳代謝：{totalMetabolism}</label>
       <br />
       <p className={`${messageColor} font-bold mt-4`}>{message}</p>
-      <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={totalMetabolism} />
+      <p>摂取カロリー</p>
+      <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={totalMetabolism} currentProtein={totalProtein} dailyProteinGoal={dailyProtein}/>
       <DayMeal/>
       <br />
       <Link to="/addmeal" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">食事を記録</Link>
