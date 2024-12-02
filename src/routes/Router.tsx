@@ -8,9 +8,13 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from "../AuthContext"
 
 export const Router = () => {
-  const { user } = useAuth()
+  const { user, loading } = useAuth();
+
   console.log(`ユーザー：${user}`);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <BrowserRouter>

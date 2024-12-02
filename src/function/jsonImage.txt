@@ -1,0 +1,42 @@
+{
+  "users": {
+    "userUID123": {
+      "dates": {
+        "2024-11-24": {
+          "meals": [
+            {
+                
+              "mealName": "朝食",
+              "calorie": 350,
+              "protein": 30
+            },
+            {
+              "mealName": "昼食",
+              "calorie": 500,
+              "protein": 40
+            },
+            {
+              "mealName": "夕食",
+              "calorie": 600,
+              "protein": 50
+            },
+            {
+              "mealName": "間食",
+              "calorie": 150,
+              "protein": 10
+            }
+          ]
+        },
+        "2024-11-25": {
+          "meals": [
+            {
+              "mealName": "朝食",
+              "calorie": 400,
+              "protein": 35
+            }
+          ]
+        }
+      }
+    }
+  }
+}
