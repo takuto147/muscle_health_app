@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 interface ProgressBarProps {
   currentCalories: number;
   dailyCalorieGoal: number;
@@ -13,29 +11,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   currentProtein,
   dailyProteinGoal,
 }) => {
-  const [selectedTab, setSelectedTab] = useState<"calories" | "protein">("calories");
   const calorieProgressPercentage = Math.min((currentCalories / dailyCalorieGoal) * 100, 100)
   const proteinProgressPercentage = Math.min((currentProtein / dailyProteinGoal) * 100, 100)
 
-  const handleTabClick = (tab: "calories" | "protein") => {
-    setSelectedTab(tab);
-  };
 
   return (
-    <div className="max-w-3xl w-full mx-auto mt-6">
-      <div className="flex justify-center mb-4">
-        <button onClick={() => handleTabClick("calories")}
-          className={`px-4 py-2 mx-2 rounded-t-lg ${selectedTab === "calories" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"
-            }`}>
-          カロリー
-        </button>
-        <button onClick={() => handleTabClick("protein")}
-          className={`px-4 py-2 mx-2 rounded-t-lg ${selectedTab === "protein" ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"
-            }`}>
-          たんぱく質
-        </button>
-      </div>
-      {selectedTab === "calories" ? (
+    <div className="border border-gray-300 p-4 rounded-lg shadow-md">
+    <div className="max-w-3xl w-full mx-auto mt-6 ">
         <div className="mb-4">
           <p className="text-center font-semibold mb-2">
             摂取カロリー:{currentCalories} kcal / 必要カロリー：{dailyCalorieGoal} kcal
@@ -47,7 +29,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
             />
           </div>
         </div>
-      ) : (
         <div className="mb-4">
           <p className="text-center font-semibold mb-2">
             摂取たんぱく質: {currentProtein}g / 必要たんぱく質: {dailyProteinGoal}g
@@ -59,7 +40,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
             />
           </div>
         </div>
-      )}
+      
+    </div>
     </div>
   );
 };

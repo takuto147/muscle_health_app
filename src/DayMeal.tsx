@@ -37,7 +37,7 @@ export const DayMeal: React.FC<DayMealProps> = ({ selectedDate }) => {
   }
 
   if (meals.length === 0) {
-    return <p>登録された食事がありません。</p>;
+    return <p>登録された食事がありません。ごはんを食べましょう。</p>;
   }
 
   return (
@@ -49,7 +49,7 @@ export const DayMeal: React.FC<DayMealProps> = ({ selectedDate }) => {
           {meals.map((meal, index) => (
             <div key={index} className="border border-gray-300 p-4 rounded-lg shadow-md">
               <h3 className="text-lg font-semibold mb-2">{meal.mealName}</h3>
-              <p>カロリー：{meal.calorie}Kcak</p>
+              <p>カロリー：{meal.calorie}Kcal</p>
               <p>たんぱく質：{meal.protein}g</p>
             </div>
           ))}

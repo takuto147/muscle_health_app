@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Header } from "./Header"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SaveMeal } from "./function/SaveMeal";
 import { DayPulldown } from "./DayPulldouwn";
 import { formatDate } from "./FormatDate";
+
+
 export const AddMeal = () => {
   const [mealName, setMealName] = useState("")
   const [calorie, setCalorie] = useState(0)
   const [protein, setProtein] = useState(0)
-  
+  const navigate = useNavigate()
+
   const today = new Date();
   const inti_day = formatDate(today)
   const [selectedDate, setSelectedDate] = useState<string>(String(inti_day))
@@ -22,6 +25,7 @@ export const AddMeal = () => {
     try {
       await SaveMeal(mealName, calorie, protein, selectedDate);
       alert("食事を保存しました");
+      navigate('/')
     } catch (error) {
       console.error(error);
       setErrorMessage("食事の保存に失敗しました。");

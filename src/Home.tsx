@@ -6,22 +6,48 @@ import { Link } from "react-router-dom";
 import { CalorieMessage } from "./CalorieMessage";
 // import { getAuth } from "firebase/auth";
 // import { app } from "./firebase";
-import { useState } from "react";
 import { formatDate } from "./FormatDate";
+import { LoadMeal } from "./function/LoadMeal";
+import { useState, useEffect } from "react";
+
+interface Meal {
+  mealName: string;
+  calorie: number;
+  protein: number;
+}
 
 export const Home = () => {
   const today = new Date();
   const inti_day = formatDate(today)
   const [selectedDate, setSelectedDate] = useState<string>(String(inti_day))
   const handleDateChange = (date: string) => setSelectedDate(date)
-  console.log( "選択した日付は",selectedDate);
+  // console.log( "選択した日付は",selectedDate);
 
-  const calorieData = [
-    { meal: "Breakfast", calories: 300 },
-    { meal: "Lunch", calories: 600 },
-    { meal: "Snack", calories: 150 },
-    { meal: "dinner", calories: 100 },
-  ];
+  const [Meals, setMeals] = useState<Meal[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      try {
+        setLoading(true)
+        setMeals([]);
+        const data = await LoadMeal(selectedDate)
+        setMeals(data?.meals || []) //オプショナルチェイニングとORでエラー回避
+      } catch (error) {
+        console.log("食事データの取得に失敗", error);
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchMeals()
+  }, [selectedDate])
+
+  if (loading) {
+    return <div>loading...</div>
+  }
+
+  const totalCalories = Meals.reduce((sum, meal) => sum + meal.calorie, 0)
+  const totalProtein = Meals.reduce((sum, meal) => sum + meal.protein, 0)
   //確認用
   // const auth = getAuth(app);
   // const user = auth.currentUser;
@@ -30,10 +56,7 @@ export const Home = () => {
   // console.log(`ユーザーUID: ${user?.uid}`);
   // console.log(`ユーザーEmail: ${user?.email}`);
 
-  const totalCalories = calorieData.reduce((sum, entry) => sum + entry.calories, 0);
-  // const totalCalories = 1000
-  const dailyCalorieGoal = 1500
-  const totalProtein = 60
+  const dailyCalorieGoal = 2000
   const dailyProtein = 90
 
   return (
@@ -47,7 +70,7 @@ export const Home = () => {
       <br />
       <CalorieMessage totalCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} />
       <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} currentProtein={totalProtein} dailyProteinGoal={dailyProtein} />
-      <DayMeal selectedDate={selectedDate}/>
+      <DayMeal selectedDate={selectedDate} />
       <br />
       <Link to="/addmeal" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">食事を記録</Link>
       <Link to="/profile" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">プロフィール更新</Link>

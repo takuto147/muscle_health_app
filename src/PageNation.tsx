@@ -23,7 +23,7 @@ export const PageNation: React.FC<PageNationProps> = (
   const handleDateClick = (date: string) => {
     onDateChange(date); // 親に通知
   };
-  
+
   // console.log(`数値確認(DateString)：${weekDates[0].toDateString()}`);
   // console.log(`数値確認(localDateString)：${weekDates[1].toLocaleDateString("ja-JP", { month: 'numeric', day: 'numeric' })}`);
 
@@ -37,7 +37,7 @@ export const PageNation: React.FC<PageNationProps> = (
             className={`px-4 py-2 rounded ${date === selectedDate ? 'bg-blue-500 text-white' : 'bg-gray-200'
               }`}
           >
-            {date === today.toDateString() ? '今日' : date}
+            {date === formatDate(today) ? '今日' : date}
           </button>
         ))}
       </div>
