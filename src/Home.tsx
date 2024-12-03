@@ -26,6 +26,7 @@ export const Home = () => {
   const [Meals, setMeals] = useState<Meal[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
+  //LoadMeal関数で数値を取得し各コンポーネントに渡す準備
   useEffect(() => {
     const fetchMeals = async () => {
       try {
@@ -45,7 +46,7 @@ export const Home = () => {
   if (loading) {
     return <div>loading...</div>
   }
-
+  //カロリー&たんぱく質の合計計算
   const totalCalories = Meals.reduce((sum, meal) => sum + meal.calorie, 0)
   const totalProtein = Meals.reduce((sum, meal) => sum + meal.protein, 0)
   //確認用
@@ -64,9 +65,10 @@ export const Home = () => {
       <Header />
       <PageNation selectedDate={selectedDate} onDateChange={handleDateChange} />
       <br />
-      <label>今日の合計摂取カロリー：{totalCalories}</label>
+      <label>今日の合計摂取カロリー：{totalCalories} kcal</label>
       <br />
-      <label>〇〇さんの新陳代謝：{dailyCalorieGoal}</label>
+      <label>今日の合計摂取たんぱく質：{totalProtein} g</label>
+      <br />
       <br />
       <CalorieMessage totalCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} />
       <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} currentProtein={totalProtein} dailyProteinGoal={dailyProtein} />

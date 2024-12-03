@@ -14,7 +14,7 @@ export const SaveMeal = async (
   if (!user) {
     throw new Error("ユーザーがログインしていません");
   }
-  //データ構造作成(後で復習する)
+  //データ構造作成
   const userDocRef = doc(db, "users", user.uid);
   const dateDocRef = doc(collection(userDocRef, "dates"), selectedDate);
   

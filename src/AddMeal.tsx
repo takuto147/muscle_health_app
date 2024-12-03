@@ -41,7 +41,7 @@ export const AddMeal = () => {
       <DayPulldown onDateChange={handleDateChange} />
       <label>食事名</label>
       <br />
-      <input type="text" className='rounded-lg border border-gray-200' onChange={handleMealNameChange} />
+      <input type="text" className='rounded-lg border border-gray-200' onChange={handleMealNameChange} placeholder="朝食/昼食/夕食/間食"/>
       <br />
       <label>カロリー [kcal]</label>
       <br />

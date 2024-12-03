@@ -6,6 +6,7 @@ import { Profile } from '../Profile';
 import { AddMeal } from '../AddMeal';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from "../AuthContext"
+import { EditMeal } from '../EditMeal';
 
 export const Router = () => {
   const { user, loading } = useAuth();
@@ -23,13 +24,14 @@ export const Router = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/addmeal" element={<AddMeal />} />
-        {user ? (
-          <>
-            <Route path="/" element={<Home />} />
-          </>
-        ) : (
-          <Route path="*" element={<Navigate to="/signin" />} />
-        )}
+        <Route path='/editmeal' element={<EditMeal />} />
+          {user ? (
+            <>
+              <Route path="/" element={<Home />} />
+            </>
+          ) : (
+            <Route path="*" element={<Navigate to="/signin" />} />
+          )}
 
       </Routes>
     </BrowserRouter>

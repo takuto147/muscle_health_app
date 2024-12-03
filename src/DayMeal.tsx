@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { LoadMeal } from "./function/LoadMeal";
+import { Link } from "react-router-dom";
 
 interface DayMealProps {
   selectedDate: string;
@@ -47,13 +48,15 @@ export const DayMeal: React.FC<DayMealProps> = ({ selectedDate }) => {
       ) : (
         <div className="mt-4 space-y-4">
           {meals.map((meal, index) => (
-            <div key={index} className="border border-gray-300 p-4 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold mb-2">{meal.mealName}</h3>
-              <p>カロリー：{meal.calorie}Kcal</p>
-              <p>たんぱく質：{meal.protein}g</p>
-            </div>
+            <Link to="/editmeal" state={{ meal, selectedDate }} key={index}>
+              <div key={index} className="border border-gray-300 p-4 rounded-lg shadow-md">
+                <h3 className="text-lg font-semibold mb-2">{meal.mealName}</h3>
+                <p>カロリー：{meal.calorie}Kcal</p>
+                <p>たんぱく質：{meal.protein}g</p>
+              </div>
+            </Link>
           ))}
-        </div>
+        </div >
       )}
     </>
   );
