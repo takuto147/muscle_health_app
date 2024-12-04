@@ -16,7 +16,7 @@ export const PageNation: React.FC<PageNationProps> = (
   const today = new Date();
   const weekDates = Array.from({ length: 7 }, (_, i) => {
     const date = new Date();
-    date.setDate(today.getDate() - (6 - i));  // sort順を逆ekp
+    date.setDate(today.getDate() - i);  // sort順を逆ekp
     return formatDate(date);
   });
 

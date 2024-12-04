@@ -9,11 +9,18 @@ import { CalorieMessage } from "./CalorieMessage";
 import { formatDate } from "./FormatDate";
 import { LoadMeal } from "./function/LoadMeal";
 import { useState, useEffect } from "react";
+import { LoadProf } from "./function/LoadProfs";
 
 interface Meal {
   mealName: string;
   calorie: number;
   protein: number;
+}
+
+interface Profs {
+  height: number;
+  weight: number;
+  age: number;
 }
 
 export const Home = () => {
@@ -25,6 +32,7 @@ export const Home = () => {
 
   const [Meals, setMeals] = useState<Meal[]>([])
   const [loading, setLoading] = useState<boolean>(true)
+  const [profs, setProfs] = useState<Profs | null>(null) // Mealsは配列、profsはオブジェクト
 
   //LoadMeal関数で数値を取得し各コンポーネントに渡す準備
   useEffect(() => {
@@ -43,9 +51,36 @@ export const Home = () => {
     fetchMeals()
   }, [selectedDate])
 
+  useEffect(() => {
+    const fetchProf = async () => {
+      try {
+        setLoading(true)
+        setProfs(null)
+        const profData = await LoadProf()
+        if (profData) {
+          setProfs(profData)
+        } else {
+          setProfs(null)
+        }
+      } catch (error) {
+        console.log("プロフィールデータの取得に失敗", error);
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProf()
+  }, [])
+
   if (loading) {
     return <div>loading...</div>
   }
+
+  if (!profs) {
+    return <div>プロフィールが読み込めませんでした</div>
+  }
+
+  const { weight, height, age } = profs
+
   //カロリー&たんぱく質の合計計算
   const totalCalories = Meals.reduce((sum, meal) => sum + meal.calorie, 0)
   const totalProtein = Meals.reduce((sum, meal) => sum + meal.protein, 0)
@@ -57,8 +92,9 @@ export const Home = () => {
   // console.log(`ユーザーUID: ${user?.uid}`);
   // console.log(`ユーザーEmail: ${user?.email}`);
 
-  const dailyCalorieGoal = 2000
-  const dailyProtein = 90
+  //const dailyCalorieGoal = 2000
+  const dailyCalorieGoal = 10 * weight + 6.25 * height - 5 * age + 5
+  const dailyProtein = 2 * weight
 
   return (
     <div className="container mx-auto p-4">
@@ -74,8 +110,7 @@ export const Home = () => {
       <ProgressBar currentCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} currentProtein={totalProtein} dailyProteinGoal={dailyProtein} />
       <DayMeal selectedDate={selectedDate} />
       <br />
-      <Link to="/addmeal" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">食事を記録</Link>
-      <Link to="/profile" className="border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300">プロフィール更新</Link>
+      <Link to="/addmeal" className="fixed z-50 bottom-10 right-10 py-5 px-2 border-2 bg-green-400 rounded-full cursor-pointer">食事を追加</Link>
     </div>
   );
 };

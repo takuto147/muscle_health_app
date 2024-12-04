@@ -23,13 +23,14 @@ export const EditMeal = () => {
   const handleCalorieChange = (e: React.ChangeEvent<HTMLInputElement>) => setCalorie(Number(e.target.value))
   const handleProteinChange = (e: React.ChangeEvent<HTMLInputElement>) => setProtein(Number(e.target.value))
 
+  console.log("カロリーは：",calorie);
+  
 
   const onUpdateMeal = async () => {
     try {
       await updateMeal(mealName, calorie, protein, selectedDate);
-      alert("食事を削除しました");
+      alert("食事を追加しました");
       navigate('/')
-
     } catch (error) {
       console.error('Failed to fetch data:', error);
     }
@@ -57,11 +58,11 @@ export const EditMeal = () => {
       <br />
       <label>カロリー [kcal]</label>
       <br />
-      <input type="number" className='rounded-lg border border-gray-200' onChange={handleCalorieChange} value={calorie} />
+      <input type="number" className='rounded-lg border border-gray-200' onChange={handleCalorieChange} value={calorie.toString()} />
       <br />
       <label>たんぱく質量 [g]</label>
       <br />
-      <input type="number" className='rounded-lg border border-gray-200' onChange={handleProteinChange} value={protein} />
+      <input type="number" className='rounded-lg border border-gray-200' onChange={handleProteinChange} value={protein.toString()}/>
       <br />
       <button className='border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300 mb-5' onClick={onUpdateMeal}>
         更新
@@ -73,5 +74,5 @@ export const EditMeal = () => {
         削除
       </button>
     </div>
-  );
+  ); 
 };

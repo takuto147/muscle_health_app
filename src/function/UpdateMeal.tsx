@@ -34,7 +34,7 @@ export const updateMeal = async (
     // 更新対象の食事を特定して変更
     const updatedMeals = meals.map((meal: Meal) =>
       meal.mealName === mealName
-        ? { ...meal, mealName, calorie, protein } //省略記法で更新
+        ? { ...meal, mealName, calorie, protein } // 省略記法で更新
         : meal
     );
 

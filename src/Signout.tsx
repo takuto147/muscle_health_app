@@ -13,5 +13,5 @@ export const Logout = () => {
     }
   };
 
-  return <button onClick={handleLogout}>ログアウト</button>;
+  return <button onClick={handleLogout} className='active:translate-y-1 active:shadow-inner hover:bg-green-300 p-4 text-sm rounded-lg flex justify-items-end'>ログアウト</button>;
 };

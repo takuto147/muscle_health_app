@@ -17,7 +17,7 @@ export const SaveMeal = async (
   //データ構造作成
   const userDocRef = doc(db, "users", user.uid);
   const dateDocRef = doc(collection(userDocRef, "dates"), selectedDate);
-  
+
   try {
     await updateDoc(dateDocRef, {
       meals: arrayUnion({

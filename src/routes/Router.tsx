@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Signin } from "../Signin"
 import { Signup } from '../Signup';
 import { Home } from '../Home';
-import { Profile } from '../Profile';
+import { EditProfile} from '../EditProfile';
 import { AddMeal } from '../AddMeal';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from "../AuthContext"
@@ -22,7 +22,7 @@ export const Router = () => {
       <Routes>
         <Route path="/Signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/addmeal" element={<AddMeal />} />
         <Route path='/editmeal' element={<EditMeal />} />
           {user ? (

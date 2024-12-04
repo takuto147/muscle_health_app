@@ -32,7 +32,7 @@ export const deleteMeal = async (
     // 食事データを削除
     const updatedMeals = meals.filter((meal: Meal) => meal.mealName !== mealName);
 
-    // 更新データをFirestoreに保存（食事が削除された状態）
+    // 更新データをFirestoreに保存
     await updateDoc(mealDocRef, {
       meals: updatedMeals
     });

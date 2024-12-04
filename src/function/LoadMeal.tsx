@@ -18,7 +18,7 @@ export const LoadMeal = async (
 
 
   const docSnap = await getDoc(dateDocRef);
-  console.log("Document data:", docSnap.data()) //data()メソッドはocumentSnapshot からドキュメントのフィールドを含むオブジェクトを返す
+  console.log("Document data:", docSnap.data()) //data()メソッドはdocumentSnapshot からドキュメントのフィールドを含むオブジェクトを返す
 
   if (docSnap.exists()) {
     return docSnap.data(); // データを返す

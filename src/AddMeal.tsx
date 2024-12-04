@@ -51,7 +51,7 @@ export const AddMeal = () => {
       <br />
       <input type="number" className='rounded-lg border border-gray-200' onChange={handleProteinChange} />
       <br />
-      <button className='border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300 mb-5' onClick={onAddMeal}>
+      <button className='border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300 mb-5 ' onClick={onAddMeal}>
         食事を追加
       </button>
       <br />
