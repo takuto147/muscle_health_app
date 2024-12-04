@@ -76,7 +76,12 @@ export const Home = () => {
   }
 
   if (!profs) {
-    return <div>プロフィールが読み込めませんでした</div>
+    return 
+    <div>
+<h1>プロフィールが読み込めませんでした。登録は下記から</h1>      
+<Link to="/editprofile" className='active:translate-y-1 active:shadow-inner hover:bg-green-300 p-4 text-sm rounded-lg flex justify-items-end'>プロフィール登録/更新</Link>
+
+    </div>
   }
 
   const { weight, height, age } = profs
