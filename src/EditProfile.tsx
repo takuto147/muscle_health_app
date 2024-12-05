@@ -29,6 +29,7 @@ export const EditProfile = () => {
   return (
     <div className="container mx-auto p-4">
       <Header />
+      <p>プロフィール未設定の方は最初に登録してください！！</p>
       <br />
       <label>身長 [cm]</label>
       <br />
@@ -44,7 +45,7 @@ export const EditProfile = () => {
       <br />
       <button type='button' onClick={onUpdateProf}
         className='"border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300 mt-3'>
-        更新
+        登録/更新
       </button>
       <br />
       <br />
