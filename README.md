@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+○ ポートフォリオ
+  • アプリ名：マッスル食事管理アプリ
+  • 説明文
+本ポートフォリオはトレーニー向けの食事管理アプリです。
+その日食べたものを記録し、合計摂取カロリーが超過していないか、合計摂取たんぱく質量が必要量取れているかを一目で確認することができます。
+1週間以内の食事履歴を見返すことができるので「何食べたっけ？」となることを防ぎます！一緒に美ボディを作りましょう！
+  • 工夫点
+    ○ 一目で不足分がどの程度か直感的にわかるように、進捗バーで摂取カロリーと摂取たんぱく質量が確認できるようになってます
+    ○ 「筋肥大に必要なたんぱく質量を摂取しつつ、消費カロリーは新陳代謝の範囲内に抑えられているか？」をシンプルかつ一目で確認できることを目的としているため、それ以外の項目は登録できないようにしています。
+    ○ typescriptを用いている
+    ○ fiirebase Hosting & github actionを用いた自動デプロイ環境を準備し、スマホでの確認をしやすくした
+  • 苦労した点
+    ○ 今まで準備されたAPIを用いて取得、登録、更新、削除といったことしか行ってこなかったため、改めてデータベースに関しての知識と、firebaseを扱う知識を学習する必要があり、時間を要した
+    ○ 今まではある程度指示があり、それを目的としてこなしていくという明確なゴールが存在したが、今回は0からゴールを設定し、それに対する道筋を立てる必要があった。
+ある程度のゴールはあったものの、何から着手するべきかわからず、大きく頭を悩ました点でした。
+(最終的には「ざっくり見た目だけ作ってしまって、あとから機能実装していく。その際関数の引数と戻り値(＋型定義)を決めておき、あとからその機能をfirebaseを用いて作成する」といったやり方で進めた)
+    ○ 本アプリ作成で初めてtypescriptを触ったため、型定義のやり方すらわからず１から学びなおした。jsではエラーが出なかったところがtsではエラーが出たりしたため、非常に修正に時間がかかりました。
+    ○ 技術的に不明点が多くあり、非常に調査に時間を要した
+例) ①今日から１週間の配列を作るにはどうすればいいか
+　②日付が日本基準ではないのでどうやって修正するか
+　③firestoreに登録する際のコレクション、オブジェクトってどう作るか
+など
+    
+○ デプロイ先
+■ URL：https://muscle-health-auth.web.app/
+■ 確認用アカウント
+  • メールアドレス：portfoliot.kakunin.147@gmail.com
+  • PASS：portfolio147
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+○ 開発期間：約1か月
 
-Currently, two official plugins are available:
+○ 技術選定理由
+■ React（フロントエンドフレームワーク）
+  • 理由１：業界標準のフレームワークだから
+Reactは多くの企業やプロジェクトで採用されている主要なフロントエンドフレームワークだから、Web開発の実務に役立つと考えました。
+  • 理由２：コンポーネントベースの設計だから
+UIをコンポーネントごとに分割できるので、再利用性と保守性が向上し、コードの可読性が高まるからです。
+  • 理由３：状態管理がしやすいから
+StateやContext APIを使って、複雑なUIでも柔軟に状態を管理できるからです。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+■ TailwindCSS（CSSフレームワーク）
+  • 理由１：開発速度が速いから
+CSSファイルを作成する必要がなく、HTMLに直接クラス名を記述することで、素早くスタイリングができるからです。
+  • 理由２：クラス名が直感的だから
+TailwindCSSのクラス名は機能を直接表しているので、学習コストが低く、スタイルが直感的に理解できるからです。
+  • 理由３：業界でトレンドになっているから
+採用事例が増えており、モダンな技術スタックとして注目されているからです。
 
-## Expanding the ESLint configuration
+■ Firebase（データベース / ユーザー管理 / デプロイ先）
+  • 理由１：シンプルなNoSQLデータベースだから
+JSON形式でデータを管理でき、複雑なテーブル設計が必要ないからです。
+  • 理由２：リアルタイムでデータが反映されるから
+データの変更が即座に反映されるので、リアルタイム性が求められる今回のアプリに最適だからです。
+  • 理由３：サーバー管理が不要だから
+サーバーレスアーキテクチャなので、サーバー管理やインフラ構築の手間がかからないからです。
+  • 理由４：ユーザー管理が容易だから
+Firebase Authenticationを使うことで、Firebase Consoleからユーザー情報を一元管理できるからです。
+  • 理由５：デプロイが自動化できるから
+GitHub Actionsと連携することで、git push時に自動でデプロイができるからです。
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+■ Vite（ビルドツール）
+  • 理由１：開発サーバーの起動が速いから
+ES Modulesを活用して必要なファイルだけを読み込むため、開発サーバーの起動が非常に速いからです。
+  • 理由２：設定がシンプルだから
+導入や設定が簡単で、エラーが発生しにくいからです。
+  • 理由３：本番ビルドが効率的だから
+Rollupをベースにしているので、最適化された高速なビルドが行えるからです。
+        
+○ 今後の展望
+  • グラフの追加
+体重や筋肉量の遷移グラフを追加し、一目で体重遷移を分かりやすくしユーザーのモチベーション維持をしやすくする
+  • 食事の検索機能
+edamameAPIや、chatGPT APIを用いて検索機能を付けたい
