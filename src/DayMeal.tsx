@@ -1,18 +1,34 @@
 import { useEffect, useState } from "react";
 import { LoadMeal } from "./function/LoadMeal";
 import { Link } from "react-router-dom";
+import { FC } from "react";
 
-interface DayMealProps {
+
+type DayMealProps = {
   selectedDate: string;
 }
 
-interface Meal {
+
+
+// interface Meal {
+//   mealName: string;
+//   calorie: number;
+//   protein: number;
+// }
+
+type Meal = {
   mealName: string;
   calorie: number;
   protein: number;
 }
 
-export const DayMeal: React.FC<DayMealProps> = ({ selectedDate }) => {
+
+export const DayMeal:FC<DayMealProps> = ( props ) => {
+// export const DayMeal = ( props : DayMealProps ) => {
+
+  const {selectedDate} = props;
+
+
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 

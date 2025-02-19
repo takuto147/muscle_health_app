@@ -23,7 +23,7 @@ interface Profs {
 }
 
 export const Home = () => {
-  const navigate = useNavigate(); // useNavigateのフックを使う
+  const navigate = useNavigate(); 
   const today = new Date();
   const inti_day = formatDate(today);
   const [selectedDate, setSelectedDate] = useState<string>(String(inti_day));

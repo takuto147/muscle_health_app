@@ -39,7 +39,7 @@ export const SaveProf = async (
       });
       console.log("新しいプロフィールを登録しました");
     }
-  } catch (error) {
+ }  catch (error) {
     console.error("プロフィールの保存に失敗しました", error);
   }
 };

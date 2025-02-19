@@ -1,8 +1,9 @@
 import { useAuth } from "./AuthContext"
 import { Link } from "react-router-dom";
 import { Logout } from "./Signout";
+import { FC, memo } from "react";
 
-export const Header = () => {
+export const Header:FC = memo(() => {
 
   const { user, loading } = useAuth();
 
@@ -27,4 +28,5 @@ export const Header = () => {
       </header>
     </div>
   );
-};
+}
+)

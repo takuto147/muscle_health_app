@@ -1,6 +1,6 @@
 import { Header } from "./Header";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { deleteMeal } from "./function/DeleteMeal";
 import { updateMeal } from "./function/UpdateMeal";
 
@@ -19,12 +19,12 @@ export const EditMeal = () => {
   const [mealName, setMealName] = useState(meal.mealName)
   const [calorie, setCalorie] = useState(meal.calorie)
   const [protein, setProtein] = useState(meal.protein)
-  const handleMealNameChange = (e: React.ChangeEvent<HTMLInputElement>) => setMealName(e.target.value)
-  const handleCalorieChange = (e: React.ChangeEvent<HTMLInputElement>) => setCalorie(Number(e.target.value))
-  const handleProteinChange = (e: React.ChangeEvent<HTMLInputElement>) => setProtein(Number(e.target.value))
+  const handleMealNameChange = (e: ChangeEvent<HTMLInputElement>) => setMealName(e.target.value)
+  const handleCalorieChange = (e: ChangeEvent<HTMLInputElement>) => setCalorie(Number(e.target.value))
+  const handleProteinChange = (e: ChangeEvent<HTMLInputElement>) => setProtein(Number(e.target.value))
 
-  console.log("カロリーは：",calorie);
-  
+  console.log("カロリーは：", calorie);
+
 
   const onUpdateMeal = async () => {
     try {
@@ -62,7 +62,7 @@ export const EditMeal = () => {
       <br />
       <label>たんぱく質量 [g]</label>
       <br />
-      <input type="number" className='rounded-lg border border-gray-200' onChange={handleProteinChange} value={protein.toString()}/>
+      <input type="number" className='rounded-lg border border-gray-200' onChange={handleProteinChange} value={protein.toString()} />
       <br />
       <button className='border-gray-200 shadow-md rounded-lg p-3  active:translate-y-1 active:shadow-inner hover:bg-blue-300 mb-5' onClick={onUpdateMeal}>
         更新
@@ -74,5 +74,5 @@ export const EditMeal = () => {
         削除
       </button>
     </div>
-  ); 
+  );
 };

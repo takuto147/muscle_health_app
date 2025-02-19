@@ -9,8 +9,8 @@ export const DayPulldown: React.FC<DayPulldownProps> = ({ onDateChange }) => {
   const today = new Date();
   const options = Array.from({ length: 7 }, (_, i) => {
     const date = new Date(today);
-    date.setDate(today.getDate() - i); 
-    return formatDate(date); 
+    date.setDate(today.getDate() - i);
+    return formatDate(date);
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => onDateChange(e.target.value);

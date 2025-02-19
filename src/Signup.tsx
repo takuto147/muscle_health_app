@@ -1,10 +1,10 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { FC,  memo,  useState } from "react";
 import { Header } from "./Header";
 import { app } from "./firebase";
 import { useNavigate } from 'react-router-dom';
 
-export const Signup = () => {
+export const Signup:FC = memo (() => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [errorMessage, setErrorMessage] = useState<string>("")
@@ -44,5 +44,5 @@ export const Signup = () => {
       </button>
     </div>
   );
-};
+});
 

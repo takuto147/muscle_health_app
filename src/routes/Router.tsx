@@ -10,7 +10,7 @@ import { EditMeal } from '../EditMeal';
 
 export const Router = () => {
   const { user, loading } = useAuth();
-
+ 
   console.log(`ユーザー：${user}`);
 
   if (loading) {
