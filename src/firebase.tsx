@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "muscle-health-auth.appspot.com",
   messagingSenderId: "619210228713",
   appId: "1:619210228713:web:abd8e49ce85a133eed8178",
-  measurementId: "G-JWLY3ZE8T4"
+  measurementId: "G-JWLY3ZE8T4",
 };
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

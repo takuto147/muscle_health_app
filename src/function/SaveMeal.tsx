@@ -1,4 +1,10 @@
-import { doc, setDoc, collection, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  collection,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
 import { app, db } from "../firebase";
 import { getAuth } from "firebase/auth";
 
@@ -38,5 +44,3 @@ export const SaveMeal = async (
     });
   }
 };
-
-

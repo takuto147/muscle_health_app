@@ -10,20 +10,20 @@ import { LoadMeal } from "./function/LoadMeal";
 import { useState, useEffect } from "react";
 import { LoadProf } from "./function/LoadProfs";
 
-interface Meal {
+type Meal = {
   mealName: string;
   calorie: number;
   protein: number;
-}
+};
 
-interface Profs {
+type Profs = {
   height: number;
   weight: number;
   age: number;
-}
+};
 
 export const Home = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const today = new Date();
   const inti_day = formatDate(today);
   const [selectedDate, setSelectedDate] = useState<string>(String(inti_day));
@@ -68,7 +68,7 @@ export const Home = () => {
       }
     };
     fetchProf();
-  }, [navigate]);
+  }, []);
 
   if (loading) {
     return <div>loading...</div>;
@@ -97,7 +97,10 @@ export const Home = () => {
       <label>今日の合計摂取たんぱく質：{totalProtein} g</label>
       <br />
       <br />
-      <CalorieMessage totalCalories={totalCalories} dailyCalorieGoal={dailyCalorieGoal} />
+      <CalorieMessage
+        totalCalories={totalCalories}
+        dailyCalorieGoal={dailyCalorieGoal}
+      />
       <ProgressBar
         currentCalories={totalCalories}
         dailyCalorieGoal={dailyCalorieGoal}
@@ -106,7 +109,10 @@ export const Home = () => {
       />
       <DayMeal selectedDate={selectedDate} />
       <br />
-      <Link to="/addmeal" className="fixed z-50 bottom-10 right-10 py-5 px-2 border-2 bg-green-400 rounded-full cursor-pointer">
+      <Link
+        to="/addmeal"
+        className="fixed z-50 bottom-10 right-10 py-5 px-2 border-2 bg-green-400 rounded-full cursor-pointer"
+      >
         食事を追加
       </Link>
     </div>

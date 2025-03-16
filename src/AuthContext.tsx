@@ -3,10 +3,10 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { app } from "./firebase"; // Firebase初期化ファイル
 
 // コンテキストの型定義
-interface AuthContextType {
+type AuthContextType = {
   user: User | null;
   loading: boolean;
-}
+};
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

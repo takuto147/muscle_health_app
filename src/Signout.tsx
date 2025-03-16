@@ -9,9 +9,16 @@ export const Logout = () => {
       await signOut(auth);
       alert("ログアウト成功");
     } catch (error) {
-      alert("ログアウトに失敗しました" );
+      alert("ログアウトに失敗しました");
     }
   };
 
-  return <button onClick={handleLogout} className='active:translate-y-1 active:shadow-inner hover:bg-green-300 p-4 text-sm rounded-lg flex justify-items-end'>ログアウト</button>;
+  return (
+    <button
+      onClick={handleLogout}
+      className="active:translate-y-1 active:shadow-inner hover:bg-green-300 p-4 text-sm rounded-lg flex justify-items-end"
+    >
+      ログアウト
+    </button>
+  );
 };

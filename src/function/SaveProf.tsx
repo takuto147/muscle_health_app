@@ -2,11 +2,7 @@ import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { app, db } from "../firebase";
 import { getAuth } from "firebase/auth";
 
-export const SaveProf = async (
-  height: number,
-  weight: number,
-  age: number
-) => {
+export const SaveProf = async (height: number, weight: number, age: number) => {
   const auth = getAuth(app);
   const user = auth.currentUser;
 
@@ -16,7 +12,7 @@ export const SaveProf = async (
 
   const userDocRef = doc(db, "users", user.uid);
   //　固定ID"profile"で登録
-  const profileDocRef = doc(userDocRef, "profs", "profile"); 
+  const profileDocRef = doc(userDocRef, "profs", "profile");
 
   try {
     // 既存のプロフィールデータを確認
@@ -39,7 +35,7 @@ export const SaveProf = async (
       });
       console.log("新しいプロフィールを登録しました");
     }
- }  catch (error) {
+  } catch (error) {
     console.error("プロフィールの保存に失敗しました", error);
   }
 };
